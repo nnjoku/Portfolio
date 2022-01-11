@@ -1,0 +1,69 @@
+// This game is rock paper scisscors. Possible outcomes, paper slams rock, scisscors cuts paper, rock slams scisscors. tie ends the game
+
+function getUserChoice(userInput) {
+    userInput=userInput.toLowerCase();
+    if(userInput === 'rock' || userInput === 'paper' || userInput === 'scissors'){
+        return userInput;
+    } else 
+    console.log("You entered an invalid input");
+}
+
+// Get computers entry
+function getComputerChoice(){
+    // use random number between 0 and 2. Assign rock, paper or scisscors to 0, 1 and 2 respectively
+    let randomNumber = Math.floor(Math.random()*3);
+    if (randomNumber === 0){
+        return 'rock';
+    } else if (randomNumber === 1){
+        return 'paper';
+    } else{
+        return 'scisscors'
+    }
+}
+function determineWinner(userChoice, computerChoice){
+
+    if (userChoice === computerChoice){
+        return 'No winner. It is a tie';
+    }
+    //     If user selects 'rock'
+    if (userChoice === 'rock'){
+        if (computerChoice === 'paper'){
+            return 'You lost';
+        } else 
+        { return "You won";
+        }
+    }
+
+      //     If user selects 'paper'
+    if (userChoice === 'paper'){
+        if (computerChoice === 'scisscors'){
+            return 'You lost';
+        } else 
+        { return "You won";
+        }
+    }
+
+      //     If user selects 'scisscors'
+    if (userChoice === 'scisscors'){
+        if (computerChoice === 'rock'){
+            return 'You lost';
+        } else 
+        { return "You won";
+        }
+    }
+}
+
+function startGame() {
+//     Prompt user to make an entry
+let promptUserEntry = prompt(" Enter either rock, paper or scisscors");
+
+// call getUserChoice function
+let userEntry = getUserChoice(promptUserEntry);
+// get computer random entry
+let computerEntry = getComputerChoice();
+
+// determineWinner
+console.log(determineWinner(userEntry, computerEntry));
+}
+
+// Let the game begin!
